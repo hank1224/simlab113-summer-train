@@ -1,0 +1,35 @@
+name: Render Notebooks to HTML branch
+
+on:
+  workflow_dispatch:  # This allows the workflow to be triggered manually
+
+jobs:
+  render-notebooks:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Jupyter
+      run: |
+        python -m pip install --upgrade pip
+        pip install nbconvert
+
+    - name: Convert Notebooks to HTML
+      run: |
+        mkdir -p rendered
+        find . -name "*.ipynb" -exec jupyter nbconvert --to html --output-dir=rendered {} +
+
+    - name: Push HTML to rendered-notebook branch
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git checkout --orphan rendered-notebook
+        git reset --hard
+        git commit --allow-empty -m "Initial commit"
+        git checkout main
+        cp -r rendered/* .
+        git add .
+        git commit -m "Add rendered HTML files"
+        git push -f origin rendered-notebook
