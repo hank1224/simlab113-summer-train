@@ -1,0 +1,10 @@
+matplotlib
+seaborn
+numpy
+pandas
+# sklearn
+scikit-learn
+
+# Git Commit
+pre-commit
+nbstripout==0.7.1

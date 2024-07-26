@@ -1,9 +1,18 @@
-; 確保所有 .csv 檔案在提交時使用 LF (Unix 樣式) 行尾
-*.csv text eol=lf
+# 所有文件在提交時應該使用 LF 作為行尾符號。
+* eol=lf
 
-; 大型檔案處理
-; https://docs.github.com/zh/repositories/working-with-files/managing-large-files/installing-git-large-file-storage
-*.csv filter=lfs diff=lfs merge=lfs -text
+# 不將 .csv 文件視為文本文件、不對行尾符號進行任何自動轉換。
+*.csv -text
 
-; 禁用對 .csv 檔案的差異顯示
+# LFS大型檔案處理
+# https://docs.github.com/zh/repositories/working-with-files/managing-large-files/installing-git-large-file-storage
+# *.csv filter=lfs diff=lfs merge=lfs -text
+
+# 禁用對 .csv 檔案的差異顯示
 *.csv -diff
+
+
+# nbstripout --install --attributes .gitattributes
+*.ipynb filter=nbstripout
+*.zpln filter=nbstripout
+*.ipynb diff=ipynb
