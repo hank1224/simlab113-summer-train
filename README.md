@@ -7,8 +7,8 @@
     - 資料視覺化 data-visualization
     - 機器學習 machine-learning
 - 0730
-    - 物件導向
-    - 演算法
+    - 物件導向 OOP
+    - GA演算法 genetic-algorithm
 - 0813
     - 神經網路
     - 卷積
