@@ -1,6 +1,5 @@
-from population import crossoverMethod, selectionMethod
-from config.Config import SelectionConfig, CrossoverConfig
-from individual.Individual import Individual
+from entities import selection_methods, crossover_methods, Individual
+from config.settings import SelectionConfig, CrossoverConfig
 
 
 class Population:
@@ -14,22 +13,22 @@ class Population:
     def select_parents(self, selection_strategy=SelectionConfig.SELECTION_STRATEGY_TYPE):
         match selection_strategy:
             case "roulette":
-                return selectionMethod.roulette_wheel_selection(self.individuals)
+                return selection_methods.roulette_wheel_selection(self.individuals)
             case "tournament":
-                return selectionMethod.tournament_selection(self.individuals)
+                return selection_methods.tournament_selection(self.individuals)
             case "rank_based":
-                return selectionMethod.rank_base_selection(self.individuals)
+                return selection_methods.rank_base_selection(self.individuals)
             case _:
                 raise ValueError(f"Invalid selection strategy: {selection_strategy}")
 
     def crossover(self, parent1, parent2):
         match CrossoverConfig.CROSSOVER_TYPE:
             case "uniform":
-                return crossoverMethod.uniform_crossover(parent1, parent2)
+                return crossover_methods.uniform_crossover(parent1, parent2)
             case "blx_alpha":
-                return crossoverMethod.blx_alpha_crossover(parent1, parent2)
+                return crossover_methods.blx_alpha_crossover(parent1, parent2)
             case "linear_interpolation":
-                return crossoverMethod.linear_interpolation_crossover(parent1, parent2)
+                return crossover_methods.linear_interpolation_crossover(parent1, parent2)
             case _:
                 raise ValueError(f"Invalid crossover type: {CrossoverConfig.CROSSOVER_TYPE}")
 

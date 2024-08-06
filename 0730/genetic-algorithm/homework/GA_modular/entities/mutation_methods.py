@@ -1,6 +1,6 @@
 import numpy as np
-from config.Problem import Constraint
-from config.Config import GeneticAlgorithmConfig, MutationConfig
+from config.problem import Constraint
+from config.settings import GeneticAlgorithmConfig, MutationConfig
 
 
 def uniform_mutation(individual):

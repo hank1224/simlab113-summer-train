@@ -1,8 +1,8 @@
 import numpy as np
 from typing import List
 
-from individual.Individual import Individual
-from config.Config import SelectionConfig
+from entities import Individual
+from config.settings import SelectionConfig
 
 
 def rank_base_selection(population: List[Individual]) -> List[Individual]:
