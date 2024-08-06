@@ -1,6 +1,6 @@
 class RuntimeState:
     def __init__(self):
-        self.current_generation = 0
+        self.current_generation = 1
         self.global_best_fitness = float('-inf')
         self.global_best_individual = None
 

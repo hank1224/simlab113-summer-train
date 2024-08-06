@@ -1,5 +1,5 @@
 class GeneticAlgorithmConfig:
-    POP_SIZE = 500  # 種群大小
+    POP_SIZE = 5000  # 種群大小
     GENERATIONS = 100  # 世代數
 
     @classmethod
@@ -12,7 +12,7 @@ class GeneticAlgorithmConfig:
 
 
 class CrossoverConfig:
-    CROSSOVER_TYPE = "uniform"  # "uniform", "blx_alpha", "linear_interpolation"
+    CROSSOVER_TYPE = "blx_alpha"  # "uniform", "blx_alpha", "linear_interpolation"
     BLX_ALPHA = 0.5  # 模糊交叉(Blend Crossover, BLX-α)
 
     @classmethod
@@ -25,7 +25,7 @@ class CrossoverConfig:
 
 
 class MutationConfig:
-    MUTATION_TYPE = "gaussian"  # "uniform", "gaussian", "non-uniform"
+    MUTATION_TYPE = "uniform"  # "uniform", "gaussian", "non-uniform"
     MUTATION_RATE = 0.6  # 變異率
     MUTATION_DELTA = 0.5  # 變異幅度
 
@@ -43,7 +43,7 @@ class MutationConfig:
 
 
 class SelectionConfig:
-    SELECTION_STRATEGY_TYPE = "roulette"  # "roulette", "tournament", "rank_based"
+    SELECTION_STRATEGY_TYPE = "tournament"  # "roulette", "tournament", "rank_based"
     TOURNAMENT_SIZE = 5  # 錦標賽選擇(tournament)
 
     @classmethod

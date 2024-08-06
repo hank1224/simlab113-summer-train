@@ -25,7 +25,7 @@ def uniform_mutation(individual):
     return individual.x, individual.y
 
 
-def gaussian_mutate(individual, sigma=0.1):
+def gaussian_mutation(individual, sigma=0.1):
     if np.random.rand() < MutationConfig.MUTATION_RATE:
         individual.x += np.random.normal(0, sigma)
         individual.x = np.clip(individual.x, Constraint.X_MIN, Constraint.X_MAX)  # 確保 x 在範圍內

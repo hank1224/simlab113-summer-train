@@ -1,7 +1,7 @@
 import numpy as np
 from config.problem import ObjectiveFunction, Constraint
 from config.settings import MutationConfig
-from entities import mutation_methods
+from methods import mutation_methods
 
 
 class Individual:
@@ -26,7 +26,7 @@ class Individual:
             case "uniform":
                 mutation_methods.uniform_mutation(self)
             case "gaussian":
-                mutation_methods.gaussian_mutate(self)
+                mutation_methods.gaussian_mutation(self)
             case "non_uniform":
                 mutation_methods.non_uniform_mutation(self)
             case _:

@@ -1,4 +1,5 @@
-from entities import selection_methods, crossover_methods, Individual
+from entities import Individual
+from methods import selection_methods, crossover_methods
 from config.settings import SelectionConfig, CrossoverConfig
 
 
