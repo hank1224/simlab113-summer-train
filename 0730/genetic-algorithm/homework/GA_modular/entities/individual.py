@@ -1,4 +1,5 @@
 import numpy as np
+
 from config.problem import ObjectiveFunction, Constraint
 from config.settings import MutationConfig
 from methods import mutation_methods

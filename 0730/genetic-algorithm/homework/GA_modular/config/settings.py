@@ -1,5 +1,5 @@
 class GeneticAlgorithmConfig:
-    POP_SIZE = 5000  # 種群大小
+    POP_SIZE = 500  # 種群大小
     GENERATIONS = 100  # 世代數
 
     @classmethod
@@ -26,10 +26,10 @@ class CrossoverConfig:
 
 class MutationConfig:
     MUTATION_TYPE = "gaussian"  # "uniform", "gaussian"
-    MUTATION_RATE = 0.6  # 變異率
-    MUTATION_DELTA = 0.7  # 變異幅度
+    MUTATION_RATE = 0.5  # 變異率
+    MUTATION_DELTA = 0.3  # 變異幅度
 
-    GAUSSIAN_SIGMA = 0.5  # 高斯變異的標準差
+    GAUSSIAN_SIGMA = 0.3  # 高斯變異的標準差
 
     @classmethod
     def get_mutation_type(cls):

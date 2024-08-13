@@ -10,8 +10,8 @@
     - 物件導向 OOP
     - GA演算法 genetic-algorithm
 - 0813
-    - 神經網路
-    - 卷積
+    - 神經網路 neural-network
+    - 卷積 CNN
 - 0827
     - 物件辨識
     - 骨架提取

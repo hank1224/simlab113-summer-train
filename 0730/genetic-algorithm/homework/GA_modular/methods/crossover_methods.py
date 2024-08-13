@@ -1,6 +1,7 @@
 import numpy as np
-from entities import Individual
+
 from config.settings import CrossoverConfig
+from entities import Individual
 
 
 def uniform_crossover(parent1, parent2):

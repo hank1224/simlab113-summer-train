@@ -1,6 +1,6 @@
+from config.settings import SelectionConfig, CrossoverConfig
 from entities import Individual
 from methods import selection_methods, crossover_methods
-from config.settings import SelectionConfig, CrossoverConfig
 
 
 class Population:
@@ -36,7 +36,7 @@ class Population:
     def generate_next_population(self, parents):
         next_population = []
         for i in range(0, len(parents), 2):
-            parent1, parent2 = parents[i], parents[i+1]
+            parent1, parent2 = parents[i], parents[i + 1]
             child1 = self.crossover(parent1, parent2)
             child2 = self.crossover(parent2, parent1)
             child1.mutate()

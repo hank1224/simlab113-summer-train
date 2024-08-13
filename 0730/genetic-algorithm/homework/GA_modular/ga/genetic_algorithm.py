@@ -1,14 +1,17 @@
-from config import settings, RuntimeState
+import matplotlib.pyplot as plt
+
+from config import RuntimeState, GeneticAlgorithmConfig
 from entities import Individual, Population
 
 
 class GeneticAlgorithm:
 
     def __init__(self):
-        self.GAconfig = settings.GeneticAlgorithmConfig()
+        self.GAconfig = GeneticAlgorithmConfig()
         self.individual = Individual()
         self.population = Population(self.GAconfig.POP_SIZE)
         self.runtime_stats = RuntimeState()
+        self.fitness_history = []  # 用於存儲每次迭代的最佳適應度
 
     def __log_generation_stats(self, best_individual):
         print(f"Generation {self.runtime_stats.get_current_generation()}:")
@@ -29,6 +32,15 @@ class GeneticAlgorithm:
             f"y: {self.runtime_stats.get_global_best_individual().y:.6f}),"
             f"Fitness = {self.runtime_stats.get_global_best_fitness():.6f}")
 
+    def __plot_fitness(self):
+        plt.figure(figsize=(10, 6))
+        plt.plot(range(GeneticAlgorithmConfig.GENERATIONS), self.fitness_history, marker='o', linestyle='-', color='b')
+        plt.title('Fitness over Iterations')
+        plt.xlabel('Iteration')
+        plt.ylabel('Fitness')
+        plt.grid(True)
+        plt.show()
+
     def run(self):
         # 初始化全局最佳個體和適應度
         global_best_individual = self.population.get_best_individual()
@@ -48,6 +60,10 @@ class GeneticAlgorithm:
             if best_individual.fitness() < self.runtime_stats.get_global_best_fitness():
                 self.runtime_stats.set_global_best_individual(best_individual)
                 self.runtime_stats.set_global_best_fitness(best_individual.fitness())
+
+            # 記錄當前最佳適應度
+            self.fitness_history.append(best_individual.fitness())
+
             # 輸出當前世代的統計資料
             self.__log_generation_stats(best_individual)
             # 更新計數
@@ -55,3 +71,5 @@ class GeneticAlgorithm:
 
         # 輸出最終結果
         self.__print_final_result()
+        # 繪製適應度變化圖表
+        self.__plot_fitness()
