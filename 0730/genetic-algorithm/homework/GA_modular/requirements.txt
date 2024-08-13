@@ -1,0 +1,4 @@
+numpy
+
+# 同環境用 conda 裝了 tensorflow 後，plt 就掛了，重開新環境就好了
+matplotlib

@@ -12,4 +12,4 @@ xgboost
 # Git Commit
 pre-commit
 nbstripout==0.7.1
-flake8==7.1.1
+# flake8==7.1.1
