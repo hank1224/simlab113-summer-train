@@ -25,29 +25,12 @@ def uniform_mutation(individual):
     return individual.x, individual.y
 
 
-def gaussian_mutation(individual, sigma=0.1):
+def gaussian_mutation(individual, sigma=MutationConfig.GAUSSIAN_SIGMA):
     if np.random.rand() < MutationConfig.MUTATION_RATE:
         individual.x += np.random.normal(0, sigma)
         individual.x = np.clip(individual.x, Constraint.X_MIN, Constraint.X_MAX)  # 確保 x 在範圍內
     if np.random.rand() < MutationConfig.MUTATION_RATE:
         individual.y += np.random.normal(0, sigma)
-        individual.y = np.clip(individual.y, Constraint.Y_MIN, Constraint.Y_MAX)  # 確保 y 在範圍內
-    # 確保 x 和 y 的約束條件
-    while not Constraint.CONSTRAINT(individual.x, individual.y):
-        individual.x = np.random.uniform(Constraint.X_MIN, Constraint.X_MAX)
-        individual.y = np.random.uniform(Constraint.Y_MIN, Constraint.Y_MAX)
-
-    return individual.x, individual.y
-
-
-def non_uniform_mutation(individual, current_generation, max_generations=GeneticAlgorithmConfig.GENERATIONS):
-    if np.random.rand() < MutationConfig.MUTATION_RATE:
-        tau = (1 - current_generation / max_generations) ** 2
-        individual.x += np.random.uniform(-1, 1) * tau
-        individual.x = np.clip(individual.x, Constraint.X_MIN, Constraint.X_MAX)  # 確保 x 在範圍內
-    if np.random.rand() < MutationConfig.MUTATION_RATE:
-        tau = (1 - current_generation / max_generations) ** 2
-        individual.y += np.random.uniform(-1, 1) * tau
         individual.y = np.clip(individual.y, Constraint.Y_MIN, Constraint.Y_MAX)  # 確保 y 在範圍內
     # 確保 x 和 y 的約束條件
     while not Constraint.CONSTRAINT(individual.x, individual.y):

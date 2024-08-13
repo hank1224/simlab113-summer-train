@@ -27,7 +27,5 @@ class Individual:
                 mutation_methods.uniform_mutation(self)
             case "gaussian":
                 mutation_methods.gaussian_mutation(self)
-            case "non_uniform":
-                mutation_methods.non_uniform_mutation(self)
             case _:
                 raise ValueError(f"Invalid mutation type: {mutation_type}")
