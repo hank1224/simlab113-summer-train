@@ -1,0 +1,10 @@
+tensorflow-macos
+tensorflow-metal
+
+pandas
+numpy
+
+matplotlib
+seaborn
+
+opencv-python
